@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Row, Col } from 'antd';
+import AppRouter from "./AppRouter";
+import AppMenu from "./components/commons/appMenu/AppMenu";
+import {BrowserRouter} from "react-router-dom";
 import './App.css';
 
+
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <Row>
+          <Col span={4}>
+              <div className="menu">
+                  <AppMenu/>
+              </div>
+          </Col>
+          <Col span={20}>
+              <div className="module">
+                  <AppRouter/>
+              </div>
+          </Col>
+        </Row>
+      </BrowserRouter>
   );
 }
 
