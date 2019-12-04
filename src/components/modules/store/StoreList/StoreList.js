@@ -1,5 +1,5 @@
 import React from "react";
-import {Avatar, Button, List, Skeleton} from 'antd';
+import {Button, List} from 'antd';
 import {useStoreList} from "./useStoreList";
 import StoreListRow from "./StoreListRow";
 

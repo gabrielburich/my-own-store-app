@@ -5,7 +5,7 @@ const StoreListRow = ({store, loading}) => {
 
     return (
         <List.Item
-            actions={[<a key={'list-products'}>Products</a>]}
+            actions={['Products']}
         >
             <Skeleton avatar title={false} loading={loading} active>
                 <List.Item.Meta
