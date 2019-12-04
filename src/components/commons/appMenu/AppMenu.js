@@ -5,8 +5,8 @@ import {useMenuItems} from "./useMenuItems";
 const AppMenu = () => {
 
     const items = [
-        {label: 'Home', icon: 'home', to: '/'},
-        {label: 'Teste', icon: 'home', to: '/test/'},
+        {label: 'Dashboard', icon: 'dashboard', to: '/'},
+        {label: 'Stores', icon: 'appstore', to: '/store/'},
         {label: 'Cadastro', icon: 'mobile',
             items: [
                 {label: 'Home', icon: 'home', to: '/'},

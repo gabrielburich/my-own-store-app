@@ -1,0 +1,14 @@
+.load-button {
+     text-align: center;
+     margin-top: 12px;
+     height: 32px;
+     line-height: 32px;
+}
+
+.ant-list-item-meta-title {
+    font-size: xx-large !important;
+}
+
+.ant-list-item-meta-description {
+    font-size: large !important;
+}
