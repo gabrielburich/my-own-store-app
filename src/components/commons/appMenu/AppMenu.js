@@ -6,11 +6,10 @@ const AppMenu = () => {
 
     const items = [
         {label: 'Dashboard', icon: 'dashboard', to: '/'},
-        {label: 'Stores', icon: 'appstore', to: '/store/'},
-        {label: 'Cadastro', icon: 'mobile',
+        {label: 'Stores', icon: 'appstore',
             items: [
-                {label: 'Home', icon: 'home', to: '/'},
-                {label: 'Home2', icon: 'home', to: '/'},
+                {label: 'List Store', icon: 'ordered-list', to: '/store/'},
+                {label: 'Create Store', icon: 'plus-square', to: '/store/add'},
             ]
         }
     ];
