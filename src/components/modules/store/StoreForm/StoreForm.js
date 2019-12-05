@@ -4,9 +4,9 @@ import {FormSelect, FormText, FormTextArea} from "../../../commons/form/FormFiel
 import {useStoreForm} from "./useStoreForm";
 import {Button} from "antd";
 
-const StoreForm = () => {
+const StoreForm = ({setCurrentContainer}) => {
 
-    const {schema, onSubmit, storeTypes, defaultValues} = useStoreForm();
+    const {schema, onSubmit, storeTypes, defaultValues} = useStoreForm(setCurrentContainer);
 
     const formProps = useForm({validationSchema: schema, defaultValues: defaultValues});
 

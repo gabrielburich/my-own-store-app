@@ -8,12 +8,13 @@ const StoreContainer = () => {
 
     const [LIST, FORM] = ['LIST', 'FORM'];
 
-    const [currentContainer] = useState(FORM);
+    const [currentContainer, setCurrentContainer] = useState(FORM);
+
 
     return (
         <>
             {currentContainer === LIST && <StoreList/>}
-            {currentContainer === FORM && <StoreForm/>}
+            {currentContainer === FORM && <StoreForm setCurrentContainer={setCurrentContainer}/>}
         </>
     );
 };

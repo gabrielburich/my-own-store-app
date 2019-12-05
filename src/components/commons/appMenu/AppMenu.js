@@ -5,13 +5,7 @@ import {useMenuItems} from "./useMenuItems";
 const AppMenu = () => {
 
     const items = [
-        {label: 'Dashboard', icon: 'dashboard', to: '/'},
-        {label: 'Stores', icon: 'appstore',
-            items: [
-                {label: 'List Store', icon: 'ordered-list', to: '/store/'},
-                {label: 'Create Store', icon: 'plus-square', to: '/store/add'},
-            ]
-        }
+        {label: 'Stores', icon: 'appstore', to: '/store/'},
     ];
 
     const menuItems = useMenuItems(items);

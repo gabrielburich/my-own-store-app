@@ -4,7 +4,7 @@ import {getData, postData} from "../../../../api/api-instance";
 import {STORE_TYPE_URL, STORE_URL} from "../../../../api/api-url-consts";
 import {message} from "antd";
 
-export const useStoreForm = () => {
+export const useStoreForm = (setCurrentContainer) => {
 
     const [storeTypes, setStoreTypes] = useState([]);
 
@@ -37,6 +37,7 @@ export const useStoreForm = () => {
 
         postData(STORE_URL, store)
             .then(() => {
+                setCurrentContainer('LIST');
                 message.success('Success Saved');
             })
             .catch(error => {
