@@ -1,3 +1,11 @@
+#root {
+    height: 100%;
+}
+
+.ant-layout {
+    height: 100%;
+}
+
 .module {
     padding: 1%;
     height: 100vh;
@@ -17,4 +25,8 @@
 
 .ant-menu {
     height: 100%;
+}
+
+.ant-layout-content {
+    padding: 1%;
 }

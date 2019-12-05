@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import {Layout} from 'antd';
 import AppRouter from "./AppRouter";
 import AppMenu from "./components/commons/appMenu/AppMenu";
 import {BrowserRouter} from "react-router-dom";
@@ -10,18 +10,15 @@ function App() {
 
   return (
       <BrowserRouter>
-        <Row>
-          <Col span={4}>
-              <div className="menu">
+          <Layout>
+              <Layout.Sider breakpoint="lg" collapsedWidth="0">
                   <AppMenu/>
-              </div>
-          </Col>
-          <Col span={20}>
-              <div className="module">
-                  <AppRouter/>
-              </div>
-          </Col>
-        </Row>
+              </Layout.Sider>
+              <Layout>
+                  <Layout.Content><AppRouter/></Layout.Content>
+
+              </Layout>
+          </Layout>
       </BrowserRouter>
   );
 }
