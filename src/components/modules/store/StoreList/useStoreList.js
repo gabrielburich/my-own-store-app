@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {deleteData, getFilterData} from "../../../../api/api-instance";
 import {STORE_URL} from "../../../../api/api-url-consts";
 import {message} from "antd";
+import orderBy from "lodash/orderBy";
 
 export const useStoreList = () => {
 
@@ -21,7 +22,7 @@ export const useStoreList = () => {
         const apiFilter = {field: 'rating', condition: 'gt', value: filterRating};
         getFilterData(STORE_URL, apiFilter)
             .then((result) => {
-                setStores(result.data);
+                setStores(orderBy(result.data, 'rating', 'desc') );
                 setLoading(false);
                 setIniLoading(false);
             })
