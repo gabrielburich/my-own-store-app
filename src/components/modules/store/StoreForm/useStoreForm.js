@@ -49,7 +49,7 @@ export const useStoreForm = (recordId, setCurrentContainer) => {
                 console.error(error);
                 message.error('Error on load values');
             })
-    }, []);
+    }, []); // eslint-disable-line
 
     const handleSubmit = (formData) => {
 
