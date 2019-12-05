@@ -6,20 +6,22 @@ import {message} from "antd";
 
 export const useStoreForm = (setCurrentContainer) => {
 
-    const [storeTypes, setStoreTypes] = useState([]);
+    const [storeTypeOptions, setStoreTypes] = useState([]);
 
-    const defaultValues = {
+    const initialValues = {
+        userId: 1,
+        rating: 0,
         name: '',
         email: '',
         description: '',
-        storeType: {}
+        storeType: ''
     };
 
     const schema = yup.object().shape({
         name: yup.string().required(),
         email: yup.string().email(),
         description: yup.string().max(254),
-        storeType: yup.object().required()
+        storeType: yup.number().required()
     });
 
 
@@ -32,10 +34,8 @@ export const useStoreForm = (setCurrentContainer) => {
             })
     }, []);
 
-    const onSubmit = (formData) => {
-        const store = {...formData, storeType: formData.storeType.value, userId: 1, rating: 0};
-
-        postData(STORE_URL, store)
+    const handleSubmit = (formData) => {
+        postData(STORE_URL, formData)
             .then(() => {
                 setCurrentContainer('LIST');
                 message.success('Success Saved');
@@ -46,5 +46,5 @@ export const useStoreForm = (setCurrentContainer) => {
             });
     };
 
-    return {schema, onSubmit, storeTypes, defaultValues};
+    return {schema, initialValues, handleSubmit, storeTypeOptions};
 };

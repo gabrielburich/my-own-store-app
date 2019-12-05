@@ -1,32 +1,56 @@
 import React from "react";
-import useForm from "react-hook-form";
-import {FormSelect, FormText, FormTextArea} from "../../../commons/form/FormFields";
 import {useStoreForm} from "./useStoreForm";
+import {Formik} from "formik";
+import {Form, FormItem, Input, ResetButton, SubmitButton} from "formik-antd";
 import {Button} from "antd";
+import {FormSelect} from "../../../commons/form/FormFields";
 
 const StoreForm = ({setCurrentContainer}) => {
 
-    const {schema, onSubmit, storeTypes, defaultValues} = useStoreForm(setCurrentContainer);
-
-    const formProps = useForm({validationSchema: schema, defaultValues: defaultValues});
+    const {schema, initialValues, handleSubmit, storeTypeOptions} = useStoreForm(setCurrentContainer);
 
     return (
-        <form onSubmit={formProps.handleSubmit(onSubmit)}>
+        <Formik
+            validationSchema={schema}
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+            render={() => (
+                <Form>
+                    <div className={"container"}>
+                        <div className={"component-container"}>
+                            <FormItem name={"name"} label={"Name"}>
+                                <Input name={"name"} />
+                            </FormItem>
 
-            <FormText label={'Name'} field={'name'} formProps={formProps}/>
+                            <FormItem name={"storeType"} label={"Store Type"}>
+                                <FormSelect
+                                    name={"storeType"}
+                                    style={{ width: "100%" }}
+                                    options={storeTypeOptions}
+                                    optionKey={"id"}
+                                    optionLabel={"description"}
+                                />
+                            </FormItem>
 
-            <FormText label={'E-mail'} field={'email'} formProps={formProps}/>
+                            <FormItem name={"email"} label={"E-Mail"}>
+                                <Input name={"email"} />
+                            </FormItem>
 
-            <FormTextArea label={'Description'} field={'description'} formProps={formProps}/>
+                            <FormItem name={"description"} label={"Description"}>
+                                <Input.TextArea name={"description"} />
+                            </FormItem>
 
-            <FormSelect label={'Store Type'} field={'storeType'} options={storeTypes}
-                        optionKey={'id'} optionLabel={'description'} formProps={formProps}
-            />
-
-            <br/>
-            <Button htmlType={'submit'}>Save</Button>
-            <Button onClick={() => formProps.reset(defaultValues)}>Clear</Button>
-        </form>
+                            <Button.Group size={"large"}>
+                                <ResetButton>Reset</ResetButton>
+                                <SubmitButton type={"primary"} disabled={false}>
+                                    Save
+                                </SubmitButton>
+                            </Button.Group>
+                        </div>
+                    </div>
+                </Form>
+            )}
+        />
     );
 };
 
