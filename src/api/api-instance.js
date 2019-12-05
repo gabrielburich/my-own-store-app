@@ -10,6 +10,10 @@ export const getData = (url) => {
     return axiosApi.get(url);
 };
 
+export const postData = (url, data) => {
+    return axiosApi.post(url, data);
+};
+
 export const getFilterData = (url, apiFilter) => {
     return axiosApi.get(`${url}?filter=${JSON.stringify(apiFilter)}`);
 };

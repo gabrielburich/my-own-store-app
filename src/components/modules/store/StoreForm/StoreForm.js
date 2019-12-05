@@ -1,21 +1,14 @@
 import React from "react";
 import useForm from "react-hook-form";
-import * as yup from "yup";
-import {FormText, FormTextArea} from "../../../commons/form/FormFields";
+import {FormSelect, FormText, FormTextArea} from "../../../commons/form/FormFields";
+import {useStoreForm} from "./useStoreForm";
+import {Button} from "antd";
 
 const StoreForm = () => {
 
-    const schema = yup.object().shape({
-        name: yup.string().required(),
-        email: yup.string().email(),
-        description: yup.string().max(254)
-    });
+    const {schema, onSubmit, storeTypes, defaultValues} = useStoreForm();
 
-    const formProps = useForm({validationSchema: schema});
-
-    const onSubmit = (formData) => {
-        console.log(formData)
-    };
+    const formProps = useForm({validationSchema: schema, defaultValues: defaultValues});
 
     return (
         <form onSubmit={formProps.handleSubmit(onSubmit)}>
@@ -26,8 +19,13 @@ const StoreForm = () => {
 
             <FormTextArea label={'Description'} field={'description'} formProps={formProps}/>
 
+            <FormSelect label={'Store Type'} field={'storeType'} options={storeTypes}
+                        optionKey={'id'} optionLabel={'description'} formProps={formProps}
+            />
+
             <br/>
-            <input type="submit"/>
+            <Button htmlType={'submit'}>Save</Button>
+            <Button onClick={() => formProps.reset(defaultValues)}>Clear</Button>
         </form>
     );
 };
