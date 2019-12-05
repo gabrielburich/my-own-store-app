@@ -1,11 +1,16 @@
 import React from "react";
-import {List, Skeleton, Rate, Avatar} from "antd";
+import {List, Skeleton, Rate, Avatar, Button} from "antd";
 
-const StoreListRow = ({store, loading}) => {
+const StoreListRow = ({store, loading, handleEdit, handleDelete}) => {
+
+    const ListActions = [
+        <Button onClick={() => handleEdit(store.id)}>Edit</Button>,
+        <Button onClick={() => handleDelete(store.id)}>Delete</Button>
+    ];
 
     return (
         <List.Item
-            actions={['Products']}
+            actions={ListActions}
         >
             <Skeleton avatar title={false} loading={loading} active>
                 <List.Item.Meta

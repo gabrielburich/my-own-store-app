@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getFilterData} from "../../../../api/api-instance";
+import {deleteData, getFilterData} from "../../../../api/api-instance";
 import {STORE_URL} from "../../../../api/api-url-consts";
 import {message} from "antd";
 
@@ -32,9 +32,21 @@ export const useStoreList = () => {
             })
     };
 
+    const handleDelete = (id) => {
+        deleteData(STORE_URL, id)
+            .then(() => {
+                getDatasetFromApi();
+                message.success('Deleted');
+            })
+            .catch(error => {
+                console.error(error);
+                message.error('Error to Delete');
+            });
+    };
+
     const onLoadMore = () => {
         setFilterRating(filterRating - 1);
     };
 
-  return {stores, onLoadMore, loading, initLoading};
+  return {stores, onLoadMore, loading, initLoading, handleDelete};
 };

@@ -3,9 +3,9 @@ import {Button, List} from 'antd';
 import {useStoreList} from "./useStoreList";
 import StoreListRow from "./StoreListRow";
 
-const StoreList = () => {
+const StoreList = ({handleEdit}) => {
 
-    const {stores, onLoadMore, loading, initLoading} = useStoreList();
+    const {stores, onLoadMore, loading, initLoading, handleDelete} = useStoreList();
 
     const loadMore = (
         <div className={'load-button'}>
@@ -15,7 +15,9 @@ const StoreList = () => {
 
     return (
         <List loading={initLoading} itemLayout={'horizontal'} loadMore={loadMore} dataSource={stores}
-              renderItem={item => <StoreListRow store={item} loading={loading}/>}
+              renderItem={item => <StoreListRow store={item} loading={loading} handleEdit={handleEdit}
+                                                handleDelete={handleDelete}/>
+              }
         />
     );
 };

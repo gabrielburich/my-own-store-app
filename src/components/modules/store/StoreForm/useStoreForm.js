@@ -1,12 +1,10 @@
 import {useState, useEffect} from "react";
 import * as yup from "yup";
-import {getData, postData} from "../../../../api/api-instance";
+import {getData, postData, putData} from "../../../../api/api-instance";
 import {STORE_TYPE_URL, STORE_URL} from "../../../../api/api-url-consts";
 import {message} from "antd";
 
-export const useStoreForm = (setCurrentContainer) => {
-
-    const [storeTypeOptions, setStoreTypes] = useState([]);
+export const useStoreForm = (recordId, setCurrentContainer) => {
 
     const initialValues = {
         userId: 1,
@@ -17,6 +15,11 @@ export const useStoreForm = (setCurrentContainer) => {
         storeType: ''
     };
 
+    const [formData, setFormData] = useState(initialValues);
+    const [storeTypeOptions, setStoreTypes] = useState([]);
+
+    const [loading, setLoading] = useState(false);
+
     const schema = yup.object().shape({
         name: yup.string().required(),
         email: yup.string().email(),
@@ -26,6 +29,20 @@ export const useStoreForm = (setCurrentContainer) => {
 
 
     useEffect(() => {
+        if (recordId) {
+            setLoading(true);
+            getData(`${STORE_URL}${recordId}`)
+                .then(result => {
+                    setFormData(result.data);
+                    setLoading(false);
+                })
+                .catch(error => {
+                        console.error(error);
+                        message.error('Error on load values');
+                        setLoading(false);
+                    })
+        }
+
         getData(STORE_TYPE_URL)
             .then(result => setStoreTypes(result.data))
             .catch(error => {
@@ -35,7 +52,12 @@ export const useStoreForm = (setCurrentContainer) => {
     }, []);
 
     const handleSubmit = (formData) => {
-        postData(STORE_URL, formData)
+
+        const callBack = (formData.id)
+            ? putData(STORE_URL, formData.id, formData)
+            : postData(STORE_URL, formData);
+
+        callBack
             .then(() => {
                 setCurrentContainer('LIST');
                 message.success('Success Saved');
@@ -46,5 +68,5 @@ export const useStoreForm = (setCurrentContainer) => {
             });
     };
 
-    return {schema, initialValues, handleSubmit, storeTypeOptions};
+    return {schema, formData, handleSubmit, storeTypeOptions, loading};
 };

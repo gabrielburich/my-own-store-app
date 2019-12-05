@@ -14,6 +14,14 @@ export const postData = (url, data) => {
     return axiosApi.post(url, data);
 };
 
+export const putData = (url, id, data) => {
+    return axiosApi.put(`${url}${id}`, data);
+};
+
+export const deleteData = (url, id) => {
+    return axiosApi.delete(`${url}${id}`);
+};
+
 export const getFilterData = (url, apiFilter) => {
     return axiosApi.get(`${url}?filter=${JSON.stringify(apiFilter)}`);
 };
