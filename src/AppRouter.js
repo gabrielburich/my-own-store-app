@@ -7,8 +7,8 @@ const AppRouter = () => {
 
     return (
         <Switch>
-            <Route path="/" component={StoreContainer} />
-            <Route path="/store/" component={StoreContainer} />
+            <Route path={'/'} exact={true} render={(props) => (<StoreContainer {...props} container={'LIST'}/>)} />
+            <Route path={'/add'} exact={true} render={(props) => (<StoreContainer {...props} container={'FORM'}/>)} />
         </Switch>
     )
 };

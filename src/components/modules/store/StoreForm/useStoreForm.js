@@ -22,7 +22,7 @@ export const useStoreForm = (recordId, setCurrentContainer) => {
 
     const schema = yup.object().shape({
         name: yup.string().required(),
-        email: yup.string().email(),
+        email: yup.string().email().nullable(),
         description: yup.string().max(254),
         storeType: yup.number().required()
     });

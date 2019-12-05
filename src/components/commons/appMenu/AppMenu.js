@@ -6,6 +6,7 @@ const AppMenu = () => {
 
     const items = [
         {label: 'Stores', icon: 'appstore', to: '/'},
+        {label: 'Create Store', icon: 'plus-square', to: '/add/'},
     ];
 
     const menuItems = useMenuItems(items);

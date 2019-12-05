@@ -47,6 +47,7 @@ const StoreForm = ({recordId, setCurrentContainer}) => {
                                         <SubmitButton type={"primary"} disabled={false}>
                                             Save
                                         </SubmitButton>
+                                        <Button onClick={() => setCurrentContainer('LIST')}>Cancel</Button>
                                     </Button.Group>
                                 </div>
                             </div>
