@@ -9,7 +9,10 @@ const StoreContainer = ({container}) => {
     const [LIST, FORM] = ['LIST', 'FORM'];
     const [currentContainer, setCurrentContainer] = useState(container);
 
-    useEffect(() => setCurrentContainer(container), [container]);
+    useEffect(() => {
+        setRecordId(null);
+        setCurrentContainer(container);
+    }, [container]);
 
     const [recordId, setRecordId] = useState(null);
 
