@@ -5,17 +5,19 @@ import {useMenuItems} from "./useMenuItems";
 const AppMenu = () => {
 
     const items = [
-        {label: 'Stores', icon: 'appstore', to: '/'},
-        {label: 'Create Store', icon: 'plus-square', to: '/add/'},
+        {label: 'Home', icon: 'home', to: '/'},
+        {label: 'Store', icon: 'plus-square', items: [
+            {label: 'List', icon: 'rest', to: '/store/'}
+        ]},
     ];
 
     const menuItems = useMenuItems(items);
 
     return (
-        <Menu defaultSelectedKeys={['0']} mode={'inline'} theme="dark">
+        <Menu mode={'inline'} theme={'dark'}>
             {menuItems}
         </Menu>
     );
 };
 
-export default React.memo(AppMenu);
+export default AppMenu;

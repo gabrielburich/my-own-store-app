@@ -1,32 +1,32 @@
-#root {
-    height: 100%;
+@import '~antd/dist/antd.css';
+
+/*TODO trocar para less*/
+
+.app {
+  height: 100vh;
 }
 
-.ant-layout {
-    height: 100%;
+.app-sider {
+  background: #001529;
+  height: 100%;
 }
 
-.module {
-    padding: 1%;
-    height: 100vh;
+.app-menu {
+  height: 100%;
+  border-right: 0
 }
 
-.menu {
-    height: 100vh;
+.app-content {
+  background: #fff;
+  padding: 24px;
+  margin: 0;
+  min-height: 280px
 }
 
-.app-container {
-    height: 100%;
+.app-content-area {
+  padding: 0 24px 24px
 }
 
-.leaflet-container {
-    height: 100%;
-}
-
-.ant-menu {
-    height: 100%;
-}
-
-.ant-layout-content {
-    padding: 1%;
+.app-breadcrumb {
+  margin: 16px 0
 }

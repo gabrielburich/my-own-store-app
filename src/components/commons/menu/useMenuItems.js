@@ -6,13 +6,20 @@ export const useMenuItems = (menuItems) => {
 
     const createMenuItem = (item, index) => (
         <Menu.Item key={index}>
-            <NavLink to={item.to}><Icon type={item.icon}/>{item.label}</NavLink>
+            <NavLink to={item.to}>
+                <Icon type={item.icon}/>
+                <span>{item.label}</span>
+            </NavLink>
         </Menu.Item>
     );
 
     const createSubmenu = (item, indexSubMenu) => (
         <Menu.SubMenu key={indexSubMenu} title={<span><Icon type={item.icon}/>{item.label}</span>}>
-            {item.items.map((item, index) => createMenuItem(item, `sub${indexSubMenu}${index}`))}
+            {item.items.map((item, index) =>
+                (!item.items)
+                    ? createMenuItem(item, `subItem${indexSubMenu}${index}`)
+                    : createSubmenu(item, `subMenu${indexSubMenu}${index}`)
+            )}
         </Menu.SubMenu>
     );
 

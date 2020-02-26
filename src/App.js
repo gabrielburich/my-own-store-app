@@ -1,26 +1,35 @@
 import React from 'react';
-import {Layout} from 'antd';
-import AppRouter from "./AppRouter";
-import AppMenu from "./components/commons/appMenu/AppMenu";
-import {BrowserRouter} from "react-router-dom";
+import {Layout} from "antd";
+import AppMenu from "./components/commons/menu/AppMenu";
+import AppBreadcrumb from "./components/commons/breadcrumb/AppBreadcrumb";
+import AppRouter from "./router/AppRouter";
 import './App.css';
 
 
-function App() {
+const {Header, Sider, Content} = Layout;
+
+const App = () => {
 
   return (
-      <BrowserRouter>
-          <Layout>
-              <Layout.Sider breakpoint="lg" collapsedWidth="0">
-                  <AppMenu/>
-              </Layout.Sider>
-              <Layout>
-                  <Layout.Content><AppRouter/></Layout.Content>
+    <Layout className={'app'}>
+      <Header />
 
-              </Layout>
-          </Layout>
-      </BrowserRouter>
+      <Layout>
+        <Sider width={200} className={'app-sider'}>
+          <AppMenu />
+        </Sider>
+
+        <Layout className={'app-content-area'}>
+          <AppBreadcrumb />
+
+          <Content className={'app-content'}>
+            <AppRouter />
+          </Content>
+        </Layout>
+
+      </Layout>
+    </Layout>
   );
-}
+};
 
 export default App;
