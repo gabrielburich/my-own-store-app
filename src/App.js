@@ -1,7 +1,7 @@
 import React from 'react';
 import {Layout} from "antd";
-import AppMenu from "./components/commons/menu/AppMenu";
-import AppBreadcrumb from "./components/commons/breadcrumb/AppBreadcrumb";
+import AppMenu from "@commons/menu/AppMenu";
+import AppBreadcrumb from "@commons/breadcrumb/AppBreadcrumb";
 import AppRouter from "./router/AppRouter";
 import './App.css';
 
