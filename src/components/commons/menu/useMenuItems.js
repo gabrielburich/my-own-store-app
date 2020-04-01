@@ -1,20 +1,20 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
-import {Icon, Menu} from 'antd';
+import {Menu} from 'antd';
 
 export const useMenuItems = (menuItems) => {
 
     const createMenuItem = (item, index) => (
         <Menu.Item key={index}>
             <NavLink to={item.to}>
-                <Icon type={item.icon}/>
+                {item.icon}
                 <span>{item.label}</span>
             </NavLink>
         </Menu.Item>
     );
 
     const createSubmenu = (item, indexSubMenu) => (
-        <Menu.SubMenu key={indexSubMenu} title={<span><Icon type={item.icon}/>{item.label}</span>}>
+        <Menu.SubMenu key={indexSubMenu} title={<span>{item.icon}{item.label}</span>}>
             {item.items.map((item, index) =>
                 (!item.items)
                     ? createMenuItem(item, `subItem${indexSubMenu}${index}`)

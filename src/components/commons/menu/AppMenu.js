@@ -1,13 +1,14 @@
 import React from "react";
 import {Menu} from "antd";
 import {useMenuItems} from "./useMenuItems";
+import {HomeOutlined, PlusSquareOutlined, RestOutlined} from "@ant-design/icons";
 
 const AppMenu = () => {
 
     const items = [
-        {label: 'Home', icon: 'home', to: '/'},
-        {label: 'Store', icon: 'plus-square', items: [
-            {label: 'List', icon: 'rest', to: '/store/'}
+        {label: 'Home', icon: <HomeOutlined />, to: '/'},
+        {label: 'Store', icon: <PlusSquareOutlined />, items: [
+            {label: 'List', icon: <RestOutlined />, to: '/store/'}
         ]},
     ];
 
