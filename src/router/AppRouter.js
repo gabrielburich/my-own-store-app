@@ -1,17 +1,31 @@
 import React from "react";
-import {Route, Switch} from "react-router";
-import {routes} from "./Routes";
+import {Redirect, Route, Switch} from "react-router";
+import {useStoreState} from "easy-peasy";
 
+import HomeContainer from "../components/modules/home/HomeContainer";
+import StoresContainer from "../components/modules/stores/StoresContainer";
 
 const AppRouter = () => {
 
+    const {token} = useStoreState(state => state.loginModel);
+
+    const isAuthenticated = () => token !== '';
+
+    const PrivateRoute = ({component: Component, ...rest}) => (
+        <Route
+            {...rest}
+            render={props => (
+                isAuthenticated()
+                    ? (<Component {...props} />)
+                    : <Redirect to={{pathname: '/login', state: {from: props.location}}} />
+            )}
+        />
+    );
+
     return (
         <Switch>
-            {routes.map((route, index) => (
-                <Route key={index} {...route} >
-                    {route.component}
-                </Route>
-            ))}
+            <PrivateRoute path={'/'} exact={true} component={HomeContainer} />
+            <PrivateRoute path={'/store'} component={StoresContainer} />
         </Switch>
     );
 };

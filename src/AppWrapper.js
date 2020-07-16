@@ -5,7 +5,6 @@ import "./theme/theme.less";
 
 import LoginContainer from "./components/modules/login/LoginContainer";
 
-
 const AppWrapper = ({history}) => (
     <>
         {(history.location.pathname === '/login')

@@ -17,8 +17,8 @@ export const loginModel = {
     }),
 
     removeToken: action((state) => {
-        state.token = null;
-        sessionStorage.setItem('1', null);
+        state.token = '';
+        sessionStorage.setItem('1', '');
     })
 
 };

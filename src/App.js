@@ -3,32 +3,33 @@ import {Layout} from "antd";
 import AppMenu from "@commons/menu/AppMenu";
 import AppBreadcrumb from "@commons/breadcrumb/AppBreadcrumb";
 import AppRouter from "./router/AppRouter";
-
+import HeaderMenu from "./components/commons/menu/HeaderMenu";
 
 const {Header, Sider, Content} = Layout;
 
 const App = () => {
 
-  return (
-    <Layout className={'app'}>
-      <Header />
+    return (
+        <Layout className={'app'}>
+            <Header>
+                <HeaderMenu />
+            </Header>
 
-      <Layout>
-        <Sider width={200} className={'app-sider'}>
-          <AppMenu />
-        </Sider>
+            <Layout>
+                <Sider width={200} className={'app-sider'}>
+                    <AppMenu />
+                </Sider>
 
-        <Layout className={'app-content-area'}>
-          <AppBreadcrumb />
+                <Layout className={'app-content-area'}>
+                    <AppBreadcrumb />
 
-          <Content className={'app-content'}>
-            <AppRouter />
-          </Content>
+                    <Content className={'app-content'}>
+                        <AppRouter />
+                    </Content>
+                </Layout>
+            </Layout>
         </Layout>
-
-      </Layout>
-    </Layout>
-  );
+    );
 };
 
 export default App;
