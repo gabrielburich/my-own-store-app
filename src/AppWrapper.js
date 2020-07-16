@@ -1,14 +1,15 @@
 import React from "react";
-import {BrowserRouter} from "react-router-dom";
 import App from "./App";
+import {Route, withRouter} from "react-router";
+import LoginContainer from "./components/modules/login/LoginContainer";
 
-const AppWrapper = () => {
+const AppWrapper = ({history}) => (
+    <>
+        {(history.location.pathname === '/login')
+                ? <Route path={'/login'} component={LoginContainer} />
+                : <App />
+        }
+    </>
+);
 
-    return (
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    );
-};
-
-export default AppWrapper;
+export default withRouter(AppWrapper);
