@@ -1,4 +1,5 @@
 const CracoAlias = require("craco-alias");
+const CracoLessPlugin = require('craco-less');
 
 module.exports = {
     plugins: [
@@ -11,6 +12,17 @@ module.exports = {
                     "@commons": "./src/components/commons/",
                 }
             }
+        },
+        {
+            plugin: CracoLessPlugin,
+            options: {
+                lessLoaderOptions: {
+                    lessOptions: {
+                        javascriptEnabled: true
+                    }
+                }
+            }
         }
+
     ]
 };

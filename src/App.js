@@ -3,7 +3,6 @@ import {Layout} from "antd";
 import AppMenu from "@commons/menu/AppMenu";
 import AppBreadcrumb from "@commons/breadcrumb/AppBreadcrumb";
 import AppRouter from "./router/AppRouter";
-import './App.css';
 
 
 const {Header, Sider, Content} = Layout;
