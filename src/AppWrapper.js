@@ -3,7 +3,7 @@ import App from "./App";
 import {Route, withRouter} from "react-router";
 import "./theme/theme.less";
 
-import LoginContainer from "./components/modules/login/LoginContainer";
+import LoginContainer from "@modules/login/LoginContainer";
 
 const AppWrapper = ({history}) => (
     <>

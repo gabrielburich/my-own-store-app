@@ -10,6 +10,8 @@ module.exports = {
                 baseUrl: "./",
                 aliases: {
                     "@commons": "./src/components/commons/",
+                    "@modules": "./src/components/modules/",
+
                 }
             }
         },

@@ -2,8 +2,8 @@ import React from "react";
 import {Redirect, Route, Switch} from "react-router";
 import {useStoreState} from "easy-peasy";
 
-import HomeContainer from "../components/modules/home/HomeContainer";
-import StoresContainer from "../components/modules/stores/StoresContainer";
+import HomeContainer from "@modules/home/HomeContainer";
+import StoresContainer from "@modules/stores/StoresContainer";
 
 const AppRouter = () => {
 
