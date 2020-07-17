@@ -2,7 +2,6 @@ import React from 'react';
 import {Layout} from "antd";
 import AppRouter from "./router/AppRouter";
 import AppMenu from "@commons/menu/AppMenu";
-import AppBreadcrumb from "@commons/breadcrumb/AppBreadcrumb";
 import HeaderMenu from "@commons/menu/HeaderMenu";
 
 const {Header, Sider, Content} = Layout;
@@ -21,8 +20,6 @@ const App = () => {
                 </Sider>
 
                 <Layout className={'app-content-area'}>
-                    <AppBreadcrumb />
-
                     <Content className={'app-content'}>
                         <AppRouter />
                     </Content>
