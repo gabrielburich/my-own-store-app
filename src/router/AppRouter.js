@@ -7,7 +7,7 @@ import StoresContainer from "@modules/stores/StoresContainer";
 
 const AppRouter = () => {
 
-    const {token} = useStoreState(state => state.loginModel);
+    const token = useStoreState(state => state.loginModel.token);
 
     const isAuthenticated = () => token !== '';
 
